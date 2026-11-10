@@ -1,15 +1,431 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Jenkins Project</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAMBA | Pure & Natural Products</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fffdf7;
+    color: #263b2b;
+}
+
+header {
+    background: #173d2b;
+    color: white;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    border: 2px solid #e5bd67;
+    color: #e5bd67;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo h2 {
+    color: #f4d58b;
+    letter-spacing: 3px;
+}
+
+.logo small {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #eee;
+    margin-top: 3px;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #f4d58b;
+}
+
+.cart {
+    background: #e4b95f;
+    color: #173d2b;
+    padding: 10px 16px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.hero {
+    min-height: 440px;
+    padding: 70px 8%;
+    display: flex;
+    align-items: center;
+    background:
+      linear-gradient(90deg, rgba(12,40,25,.90), rgba(12,40,25,.35)),
+      url("https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=1600&q=85");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 6vw, 58px);
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+.hero h1 span {
+    color: #f2cd7e;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.btn {
+    display: inline-block;
+    background: #e6bd6a;
+    color: #173d2b;
+    padding: 14px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #f5d994;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
+    padding: 28px 15px;
+    background: #f4efdf;
+    text-align: center;
+}
+
+.features div {
+    font-weight: bold;
+    color: #315b3d;
+}
+
+.section {
+    padding: 65px 7%;
+    text-align: center;
+}
+
+.section-heading {
+    font-size: 34px;
+    margin-bottom: 12px;
+    color: #204b32;
+}
+
+.section-subtitle {
+    color: #777;
+    margin-bottom: 35px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 22px rgba(0,0,0,.08);
+    transition: .3s;
+    text-align: left;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 28px rgba(0,0,0,.13);
+}
+
+.product-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    background: #eee;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #204b32;
+}
+
+.product-info p {
+    color: #777;
+    font-size: 14px;
+    min-height: 38px;
+    line-height: 1.5;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #b17b22;
+    margin: 15px 0;
+}
+
+.price small {
+    font-size: 12px;
+    color: #777;
+    font-weight: normal;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 12px;
+    background: #204b32;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.add-btn:hover {
+    background: #326b43;
+}
+
+.about {
+    background: #f1f4e9;
+    padding: 65px 10%;
+    text-align: center;
+}
+
+.about p {
+    max-width: 750px;
+    margin: 20px auto 0;
+    line-height: 1.8;
+    color: #5c665a;
+}
+
+.contact {
+    padding: 55px 15px;
+    text-align: center;
+}
+
+.contact p {
+    margin: 12px;
+    color: #666;
+}
+
+footer {
+    background: #173d2b;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    line-height: 1.8;
+}
+
+footer span {
+    color: #f2cd7e;
+}
+
+@media(max-width: 600px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 55px 7%;
+    }
+
+    .section {
+        padding: 45px 5%;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <h1>Hello Hemant</h1>
-    <h2>Welcome to My First Website</h2>
+<header>
+    <div class="logo">
+        <div class="logo-icon">L</div>
+        <div>
+            <h2>LAMBA</h2>
+            <small>PURE & NATURAL</small>
+        </div>
+    </div>
 
-    <p>This website will be deployed using Jenkins CI/CD.</p>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+        <span class="cart">🛒 Cart: <span id="cart-count">0</span></span>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Nature Ki Goodness,<br><span>LAMBA Ke Saath!</span></h1>
+        <p>
+            Pure oils, natural sweetness aur quality products.
+            Apne parivaar ke liye chuniye prakriti ka asli swaad.
+        </p>
+        <a href="#products" class="btn">Explore Products →</a>
+    </div>
+</section>
+
+<div class="features">
+    <div>🌿 Natural Products</div>
+    <div>💚 Quality First</div>
+    <div>📦 Carefully Packed</div>
+    <div>⭐ Customer Focused</div>
+</div>
+
+<section class="section" id="products">
+    <h2 class="section-heading">Our Products</h2>
+    <p class="section-subtitle">
+        LAMBA ke chuninda products – quality aur swaad ka behtareen sangam
+    </p>
+
+    <div class="products">
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=700&q=80" alt="Mustard oil">
+            <div class="product-info">
+                <h3>Pure Sarson Ka Tel</h3>
+                <p>Rich aroma aur traditional taste wala mustard oil.</p>
+                <div class="price">₹249 <small>/ 1 Litre</small></div>
+                <button class="add-btn" onclick="addToCart('Sarson Ka Tel')">Add to Cart +</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80" alt="Groundnut oil">
+            <div class="product-info">
+                <h3>Moongfali Ka Tel</h3>
+                <p>Peanut oil, everyday cooking ke liye.</p>
+                <div class="price">₹279 <small>/ 1 Litre</small></div>
+                <button class="add-btn" onclick="addToCart('Moongfali Ka Tel')">Add to Cart +</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=700&q=80" alt="Coconut oil">
+            <div class="product-info">
+                <h3>Coconut Oil</h3>
+                <p>Multipurpose coconut oil for daily use.</p>
+                <div class="price">₹349 <small>/ 500 ml</small></div>
+                <button class="add-btn" onclick="addToCart('Coconut Oil')">Add to Cart +</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=700&q=80" alt="Jaggery">
+            <div class="product-info">
+                <h3>Desi Gud</h3>
+                <p>Traditional sweetness for your family.</p>
+                <div class="price">₹99 <small>/ 1 Kg</small></div>
+                <button class="add-btn" onclick="addToCart('Desi Gud')">Add to Cart +</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=700&q=80" alt="Natural food product">
+            <div class="product-info">
+                <h3>Til Ka Tel</h3>
+                <p>Sesame oil with a rich, nutty flavour.</p>
+                <div class="price">₹299 <small>/ 500 ml</small></div>
+                <button class="add-btn" onclick="addToCart('Til Ka Tel')">Add to Cart +</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="about" id="about">
+    <h2 class="section-heading">About LAMBA</h2>
+    <p>
+        LAMBA ka maksad hai aap tak quality aur natural products
+        pahunchana. Hum apne customers ke bharose, product quality
+        aur achhe experience ko sabse zyada importance dete hain.
+        <br><br>
+        <strong>LAMBA – Quality You Can Trust!</strong>
+    </p>
+</section>
+
+<section class="contact" id="contact">
+    <h2 class="section-heading">Contact Us</h2>
+    <p>📞 Phone: Your Contact Number</p>
+    <p>📧 Email: your-email@example.com</p>
+    <p>📍 Location: India</p>
+</section>
+
+<footer>
+    <h2><span>LAMBA</span> – Pure & Natural</h2>
+    <p>Bringing Nature Closer to You 🌿</p>
+    <p>© 2026 LAMBA. All Rights Reserved.</p>
+</footer>
+
+<script>
+let cartCount = 0;
+
+function addToCart(productName) {
+    cartCount++;
+    document.getElementById("cart-count").innerText = cartCount;
+    alert(productName + " added to cart!");
+}
+</script>
 
 </body>
 </html>
